@@ -1,0 +1,30 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0 auto;
+}
+
+body {
+    display: flex;
+    flex-direction: row;
+}
+
+#gridContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#divSquare > .divSquare:nth-child(16n + 1) {
+    width: 100%;
+}
+
+.divSquare {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    padding: 1rem;
+}
