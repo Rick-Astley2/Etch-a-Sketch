@@ -1,6 +1,25 @@
+const mode = document.querySelector("#modes");
 const grid = document.querySelector("#gridContainer");
 const submitBtn = document.querySelector("#submitBtn");
 const input = document.querySelector("input");
+
+function getRndColor() {
+  let symbols = "123456789ABCDEF";
+  let color = "#";
+  for (let i = 0; i < 6; i++) {
+    color += symbols[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+function fade() {
+  alpha -= 0.1;
+  if (alpha < 0) alpha = 1;
+
+  let color = `rgba(0,0,0, ${alpha})`;
+
+  return color;
+}
 
 function submit(e) {
   e.preventDefault();
@@ -19,7 +38,7 @@ function gridCreator(gridSize) {
   if (gridSize <= 100) {
     for (let j = 0; j < gridSize; j++) {
       const rowGrid = document.createElement("div");
-      rowGrid.classList.add("rowGrid")
+      rowGrid.classList.add("rowGrid");
       let squareSize = 940 / gridSize;
       for (let i = 0; i < gridSize; i++) {
         const divSquare = document.createElement("div");
@@ -28,10 +47,22 @@ function gridCreator(gridSize) {
         divSquare.style.width = `${squareSize}px`;
         divSquare.style.height = `${squareSize}px`;
 
-        divSquare.addEventListener(
-          "mouseover",
-          () => (divSquare.style.backgroundColor = "black"),
-        );
+        if (modeValue === "normal") {
+          divSquare.addEventListener(
+            "mouseover",
+            () => (divSquare.style.backgroundColor = "black"),
+          );
+        } else if (modeValue === "random") {
+          divSquare.addEventListener(
+            "mouseover",
+            () => (divSquare.style.backgroundColor = getRndColor()),
+          );
+        } else if (modeValue === "reduce") {
+          divSquare.addEventListener(
+            "mouseover",
+            () => (divSquare.style.backgroundColor = fade()),
+          );
+        }
 
         rowGrid.appendChild(divSquare);
       }
@@ -40,5 +71,7 @@ function gridCreator(gridSize) {
   }
 }
 
+let modeValue = mode.value;
+let alpha = 1;
 gridCreator(16);
 submitBtn.addEventListener("click", submit);
