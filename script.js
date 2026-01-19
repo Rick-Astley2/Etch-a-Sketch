@@ -1,10 +1,11 @@
 const mode = document.querySelector("#modes");
+const reset = document.querySelector("#reset");
 const grid = document.querySelector("#gridContainer");
 const submitBtn = document.querySelector("#submitBtn");
 const input = document.querySelector("input");
 
 function getRndColor() {
-  let symbols = "123456789ABCDEF";
+  let symbols = "0123456789ABCDEF";
   let color = "#";
   for (let i = 0; i < 6; i++) {
     color += symbols[Math.floor(Math.random() * 16)];
@@ -47,17 +48,17 @@ function gridCreator(gridSize) {
         divSquare.style.width = `${squareSize}px`;
         divSquare.style.height = `${squareSize}px`;
 
-        if (modeValue === "normal") {
+        if (mode.value === "normal") {
           divSquare.addEventListener(
             "mouseover",
             () => (divSquare.style.backgroundColor = "black"),
           );
-        } else if (modeValue === "random") {
+        } else if (mode.value === "random") {
           divSquare.addEventListener(
             "mouseover",
             () => (divSquare.style.backgroundColor = getRndColor()),
           );
-        } else if (modeValue === "reduce") {
+        } else if (mode.value === "reduce") {
           divSquare.addEventListener(
             "mouseover",
             () => (divSquare.style.backgroundColor = fade()),
@@ -71,7 +72,6 @@ function gridCreator(gridSize) {
   }
 }
 
-let modeValue = mode.value;
 let alpha = 1;
 gridCreator(16);
 submitBtn.addEventListener("click", submit);

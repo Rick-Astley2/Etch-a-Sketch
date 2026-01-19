@@ -7,21 +7,23 @@
         <link rel="stylesheet" href="styles.css" />
     </head>
     <body>
-        <div class="formContainer">            
+        
+        <div class="container">            
             <form>
             <label for="item">Enter a new item:</label>
             <input type="number" name="item" id="item" />
             <button id="submitBtn">Enter</button>
             </form>
         </div>
-        
-        <select name="modes" id="modes">
-            <option value="normal">Normal mode</option>
-            <option value="reduce">Reduce mode</option>
-            <option value="random">Random mode</option>
-        </select>
-        
         <div class="container">
+            <select name="modes" id="modes">
+                <option value="normal">Normal mode</option>
+                <option value="reduce">Reduce mode</option>
+                <option value="random">Random mode</option>
+            </select>
+        </div>
+        
+        <div class="gridContainer">
             <div id="gridContainer"></div>
         </div>
 

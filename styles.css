@@ -9,11 +9,11 @@ body {
     flex-direction: column;
 }
 
-.formContainer {
+.container {
     padding: 10px;
 }
 
-.container {
+.gridContainer {
     border: 6px solid black;
 }
 
@@ -45,5 +45,3 @@ body {
     background-color: white;
 
 }
-
-
